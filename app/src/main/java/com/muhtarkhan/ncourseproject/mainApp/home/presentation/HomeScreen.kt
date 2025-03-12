@@ -89,7 +89,7 @@ fun HomeScreen(
                     }
                 }
 
-                // Контент (баннеры и курсы)
+
                 when {
                     state.isLoading -> CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
                     state.error != null -> Text(
@@ -103,7 +103,7 @@ fun HomeScreen(
                         LazyColumn(
                             modifier = Modifier
                                 .fillMaxSize()
-                                .padding(top = 200.dp) 
+                                .padding(top = 200.dp)
                         ) {
                             items(banners, key = { it.imageUrl }) { banner ->
                                 BannerItem(banner)

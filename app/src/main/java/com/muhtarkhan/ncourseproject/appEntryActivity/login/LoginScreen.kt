@@ -105,7 +105,7 @@ fun LoginScreen(
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            // Анимация ошибки
+
             AnimatedVisibility(visible = errorMessage.isNotEmpty()) {
                 Text(
                     text = errorMessage,
@@ -152,7 +152,7 @@ fun LoginScreen(
         }
     }
 
-    // Обработка состояний отдельно
+
     when (loginState) {
         is LoginState.Loading -> {
             Column(
@@ -168,7 +168,7 @@ fun LoginScreen(
                 navController.navigate(R.id.action_loginFragment_to_homeFragment)
             }
         }
-        else -> {} // Ошибка уже отображается через `AnimatedVisibility`
+        else -> {}
     }
 }
 

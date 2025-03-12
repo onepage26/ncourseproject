@@ -37,7 +37,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -69,7 +68,6 @@ fun CatalogScreen(
 ) {
     var selectedTab by remember { mutableStateOf("course") }
     val sheetState = rememberModalBottomSheetState()
-    val coroutineScope = rememberCoroutineScope()
     var isSheetOpen by remember { mutableStateOf(false) }
 
     Scaffold(
@@ -140,7 +138,7 @@ fun CatalogScreen(
         ) {
             BottomSheetContent(
                 onClose = { isSheetOpen = false },
-                onEvent = onEvent // Передаём в BottomSheetContent
+                onEvent = onEvent
             )
         }
     }
@@ -169,7 +167,7 @@ fun BottomSheetContent(onClose: () -> Unit, onEvent: (CatalogEvent) -> Unit) {
         Button(
             onClick = {
                 onEvent(CatalogEvent.SendConsultation(name, email, phone))
-                onClose() // Закрываем BottomSheet
+                onClose()
             },
             modifier = Modifier.fillMaxWidth()
         ) {
