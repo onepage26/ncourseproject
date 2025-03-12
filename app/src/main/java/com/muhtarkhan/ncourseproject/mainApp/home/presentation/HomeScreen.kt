@@ -103,7 +103,7 @@ fun HomeScreen(
                         LazyColumn(
                             modifier = Modifier
                                 .fillMaxSize()
-                                .padding(top = 200.dp) // Отступ сверху, чтобы не перекрывать текстовый блок и кнопку
+                                .padding(top = 200.dp) 
                         ) {
                             items(banners, key = { it.imageUrl }) { banner ->
                                 BannerItem(banner)
@@ -115,7 +115,7 @@ fun HomeScreen(
                                 )
                             }
                             items(courses, key = { it.id }) { course ->
-                                CourseItem(course, state, onEvent)
+                                CourseItem(course)
                             }
 
 
@@ -145,10 +145,10 @@ fun BannerItem(banner: Banner) {
 
     Box(modifier = Modifier.fillMaxWidth().padding(horizontal = 4.dp, vertical = 12.dp).height(200.dp)) {
         AsyncImage(
-            model = banner.imageUrl, // URL изображения
-            contentDescription = null, // Описание для accessibility
+            model = banner.imageUrl,
+            contentDescription = null,
             modifier = Modifier.fillMaxSize().clip(RoundedCornerShape(20.dp)),
-            contentScale = ContentScale.Crop // Масштабирование изображения
+            contentScale = ContentScale.Crop
         )
         Text(
             text = banner.text,
@@ -160,7 +160,7 @@ fun BannerItem(banner: Banner) {
 }
 
 @Composable
-fun CourseItem(course: Course, state: HomeUiState, onEvent: (HomeEvent) -> Unit) {
+fun CourseItem(course: Course) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
