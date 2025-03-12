@@ -31,7 +31,7 @@ class LoginViewModelTest {
     fun `login success`() = runTest {
         // Given
         val authRepository = AuthRepositoryStub(
-            Response.success(LoginResponse("token123")) // Успешный ответ
+            Response.success(LoginResponse("token123"))
         )
         val accountProvider = AccountProviderStub()
         val viewModel = LoginViewModel(authRepository, accountProvider)
@@ -53,7 +53,7 @@ class LoginViewModelTest {
     fun `login failure - unsuccessful response`() = runTest {
         // Given
         val authRepository = AuthRepositoryStub(
-            Response.error(400, mock()) // Неуспешный ответ
+            Response.error(400, mock())
         )
         val accountProvider = AccountProviderStub()
         val viewModel = LoginViewModel(authRepository, accountProvider)
@@ -64,9 +64,9 @@ class LoginViewModelTest {
 
         // Then
         viewModel.loginState.test {
-            assertEquals(LoginState.Loading, awaitItem()) // Проверяем состояние Loading
+            assertEquals(LoginState.Loading, awaitItem())
             val errorState = awaitItem() as LoginState.Error
-            assertEquals("Login failed", errorState.message) // Проверяем сообщение об ошибке
+            assertEquals("Login failed", errorState.message)
         }
     }
 }

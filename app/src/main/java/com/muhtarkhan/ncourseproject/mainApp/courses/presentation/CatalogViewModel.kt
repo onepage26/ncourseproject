@@ -56,5 +56,4 @@ class CatalogViewModel(private val getCatalogUseCase: GetCatalogUseCase, private
                 .launchIn(viewModelScope)
         }
     }
-
 }

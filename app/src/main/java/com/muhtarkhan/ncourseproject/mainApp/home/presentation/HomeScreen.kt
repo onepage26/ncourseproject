@@ -66,7 +66,7 @@ fun HomeScreen(
                     .fillMaxSize()
                     .padding(paddingValues)
             ) {
-                // Текстовый блок и кнопка
+
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
