@@ -125,7 +125,7 @@ fun CatalogScreen(
                 CTAButton(onClick = { isSheetOpen = true })
 
                 if (state.isConsultationSent) {
-                    Text("Запрос успешно отправлен!", color = Color.Green, modifier = Modifier.padding(16.dp))
+                    Text("Запрос успешно отправлен!", color = LocalColors.current.primary, modifier = Modifier.padding(16.dp))
                 }
             }
         }
