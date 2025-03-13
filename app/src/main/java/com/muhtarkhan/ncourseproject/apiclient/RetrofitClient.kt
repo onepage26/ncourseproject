@@ -5,6 +5,7 @@ import com.muhtarkhan.ncourseproject.appEntryActivity.data.network.authIntercept
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
     private const val BASE_URL = "https://nfactorialappbackend.onrender.com/"
@@ -12,6 +13,8 @@ object RetrofitClient {
 
     fun create(accountProvider: AccountProvider): Retrofit {
         val okHttpClient = OkHttpClient.Builder()
+            .readTimeout(60_000, TimeUnit.MILLISECONDS)
+            .writeTimeout(60_000, TimeUnit.MILLISECONDS)
             .addInterceptor(AuthInterceptor(accountProvider))
             .build()
 

@@ -5,7 +5,6 @@ import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
 import com.muhtarkhan.ncourseproject.appEntryActivity.data.account.AccountProvider
 import com.muhtarkhan.ncourseproject.R
-import com.muhtarkhan.ncourseproject.mainApp.courses.presentation.CatalogEvent
 import com.muhtarkhan.ncourseproject.mainApp.home.domain.usecase.GetHomeUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -32,7 +31,7 @@ class HomeViewModel(private val getHomeUseCase: GetHomeUseCase) : ViewModel() {
             }
             is HomeEvent.onLogOut -> {
                 accountProvider.clearToken()
-                navController.navigate(R.id.action_homeFragment_to_loginFragment) // Навигация
+                navController.navigate(R.id.action_homeFragment_to_loginFragment)
             }
         }
     }
@@ -42,7 +41,7 @@ class HomeViewModel(private val getHomeUseCase: GetHomeUseCase) : ViewModel() {
             getHomeUseCase()
                 .onStart { _uiState.update { it.copy(isLoading = true, error = null) } }
                 .catch { e -> _uiState.update { it.copy(isLoading = false, error = e.message) } }
-                .collect { data -> _uiState.update { it.copy(isLoading = false, mainData = data) } }
+                .collect { date -> _uiState.update { it.copy(isLoading = false, mainData = date) } }
         }
     }
 }
